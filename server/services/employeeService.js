@@ -59,3 +59,16 @@ export const deleteEmployeeService = async (employeeId) => {
 
     return employee;
 };
+
+
+export const updateEmployeeService = async (id, updateData) => {
+    const employee = await Employee.findOneAndUpdate(
+      { _id: id, isDeleted: false },
+      { $set: updateData },
+      { new: true }
+    );
+  
+    if (!employee) throw new Error("Employee not found");
+    return employee;
+  };
+  

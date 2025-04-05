@@ -2,7 +2,8 @@ import { asyncHandler } from "../middleware/asyncHandler.js";
 import { 
     addEmployeeService, 
     deleteEmployeeService, 
-    getEmployeesService 
+    getEmployeesService, 
+    updateEmployeeService
 } from "../services/employeeService.js";
 
 export const addEmployee = asyncHandler(async (req, res) => {
@@ -63,3 +64,32 @@ export const removeEmployee = asyncHandler(async (req, res) => {
         message: "Employee removed successfully",
     });
 });
+
+
+export const updateEmployee = asyncHandler(async (req,res) => {
+    const {employeeId} = req.params;
+    const employeeData = req.body;
+
+    if(req.file && req.file.path){
+        employeeData.employeeImage = req.file.path
+    }
+    else{
+        throw new Error ("Invalid Employee Image")
+    }
+
+    const employee = await updateEmployeeService(employeeId,employeeData)
+
+    if(!employee){
+        res.status(400).json({
+            success:false,
+            message:"Invalid Employee"
+        })
+    }
+    else{
+        res.status(200).json({
+            success:true,
+            message:"Update Employee succesfull",
+            employee
+        })
+    }
+})

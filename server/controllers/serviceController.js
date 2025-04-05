@@ -9,7 +9,6 @@ import {
 export const addServiceController = asyncHandler(async (req, res) => {
     const serviceData = req.body;
 
-    console.log(req.body , 'sdfghjjhgfddfghjhgfd');
     
     if (req.file && req.file.path) {
         serviceData.image = req.file.path;

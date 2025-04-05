@@ -64,7 +64,6 @@ export const updateService = async (serviceId, updateData) => {
     if (!mongoose.Types.ObjectId.isValid(serviceId)) {
         throw new Error("Invalid service ID format");
     }
-    console.log(updateData,'hello');
     
     const service = await Service.findByIdAndUpdate(
         serviceId,
