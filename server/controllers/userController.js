@@ -1,6 +1,6 @@
 // import  getUserById from "../sarvieces/userServiece"; 
 
-import { getUserById } from "../sarvieces/userSarviece.js";
+import { getUserById } from "../services/userSarviece.js";
 
 
 export const getUser = async (req, res) => {

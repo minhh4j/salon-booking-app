@@ -1,26 +1,25 @@
-
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const serviceSchema = new mongoose.Schema(
   {
-    servicename: {
+    serviceName: {
       type: String,
       required: [true, "Service name is required"],
       unique: true,
     },
-    servicecharge: {
+    serviceCharge: {
       type: Number,
-      required: [true, "Service price is required"],
+      required: [true, "Service charge is required"],
     },
     image: {
-      type: [],
+      type: String,
       required: [true, "Service image URL is required"],
     },
     duration: {
       type: String,
       required: [true, "Service duration is required"],
     },
-    serviecedescription: {
+    serviceDescription: {
       type: String,
       required: [true, "Service description is required"],
     },
@@ -32,4 +31,4 @@ const serviceSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("Sarvice", serviceSchema);
+export default mongoose.model("Service", serviceSchema);

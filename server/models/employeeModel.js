@@ -1,4 +1,3 @@
-
 import mongoose from "mongoose";
 
 const employeeSchema = new mongoose.Schema(
@@ -6,7 +5,6 @@ const employeeSchema = new mongoose.Schema(
     employeeName: {
       type: String,
       required: [true, "Employee name is required"],
-      unique: true,
     },
     employeeImage: {
       type: String,
@@ -14,17 +12,17 @@ const employeeSchema = new mongoose.Schema(
     },
     duration: {
       type: String,
-      required: [true, "Employee time is required"],
+      required: [true, "Employee duration is required"],
     },
-    employeefees: {
+    employeeFees: {
       type: Number,
       required: [true, "Employee fees are required"],
       min: 0,
     },
-    iconicCut: {
+    specialCut: {
       type: String,
-      required: [true, "Employee specialCut are required"],
-  },
+      required: [true, "Employee special cut is required"],
+    },
     description: {
       type: String,
       required: [true, "Employee description is required"],

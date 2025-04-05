@@ -22,7 +22,7 @@ app.use('/api', userRoutes);
 app.use('/api', sarviceRoutes)
 app.use('/api',  employeeRoutes)
 
-app.use(errorHandler)
+// app.use(errorHandler)
 
 const PORT = process.env.PORT || 5001
 app.listen(PORT , () => console.log(`🚀 Server is running on port ${PORT}`))
