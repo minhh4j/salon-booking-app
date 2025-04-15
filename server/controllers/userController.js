@@ -1,6 +1,7 @@
 // import  getUserById from "../sarvieces/userServiece"; 
 
-import { getUserById } from "../services/userSarviece.js";
+import { getUserById , createUserService} from "../services/userSarviece.js";
+import {Clerk} from '@clerk/clerk-sdk-node'
 
 
 export const getUser = async (req, res) => {
@@ -12,3 +13,27 @@ export const getUser = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+
+
+
+const clerk = new Clerk({
+    secretKey:process.env.CLERK_SECRET_KEY
+})
+
+export const createUser = async (req,res)=>{
+    const {userId} = req.body;
+    try {
+        const user = await clerk.users.getUser(userId)
+        const id = user.id;
+        const firstName = user.firstName 
+        const lastName = user.lastName
+        const email = user.emailAddresses[0]?.emailAddress
+        console.log(id,firstName,lastName,email,'aaaa')
+        const newUser = await createUserService(id,firstName,lastName,email)
+        console.log(newUser,'hello')
+        res.status(200).json(newUser)
+    } catch (error) {
+        
+    }
+}

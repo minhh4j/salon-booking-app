@@ -1,13 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { UserButton, SignInButton, useUser } from "@clerk/nextjs";
 import { IoMdContact } from "react-icons/io";
+import axios from "axios";
 
 const Navbar: React.FC = () => {
   const { isSignedIn, user, isLoaded } = useUser();
+
+  useEffect(() => {
+    if(user){
+      axios.post("http://localhost:5001/api/user",{userId:user.id})
+    }
+  },[user])
 
   return (
     <nav className="flex justify-between items-center p-6 bg-[#312e15] text-gray-300 h-[100px] border-b-2 border-[#000000]">

@@ -6,13 +6,14 @@ import sarviceRoutes from './routes/sarviceRoutes.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import employeeRoutes from './routes/employeeRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+import cors from 'cors'
 
 
 
 
 const app = express()
 
-
+app.use(cors());
 app.use(express.json());
 
 connectDb();

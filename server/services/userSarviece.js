@@ -26,3 +26,19 @@ export const getUserById = async (clerkId) => {
   }
   
 };
+
+export const createUserService = async(id , firstName , lastName , email ) => {
+    const existingUser = await User.findOne({email})
+    if(existingUser){
+      throw new Error('user existing')
+    }
+  const user = new User({
+    clerkId: id,
+    email:email,
+    firstName:firstName,
+    lastName:lastName,
+  }) 
+console.log(user)
+  await user.save()
+  return user
+}
