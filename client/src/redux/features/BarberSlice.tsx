@@ -1,13 +1,14 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { endpoint } from '../../app/api/endpoints';
+import { log } from 'console';
 export interface Barber {
   _id: string;
   employeeName: string;
   employeeFees: number;
   specialCut: string;
   description?: string;
-  employeeimage?: string;
+  employeeImage?: string;
 }
 
 interface BarberState {
@@ -22,7 +23,7 @@ const initialState: BarberState = {
   error: null,
 };
 
-// 🔹 Fetch barbers
+
 export const fetchBarbers = createAsyncThunk('barbers/fetchAll', async (_, thunkAPI) => {
   try {
     const res = await axios.get(`http://localhost:5001/api/${endpoint.BARBER.GET}`);
@@ -34,6 +35,23 @@ export const fetchBarbers = createAsyncThunk('barbers/fetchAll', async (_, thunk
 
   }
 });
+
+export const deleteBarber = createAsyncThunk(
+  'barbers/deleteBarber',
+  async (barberId: string, thunkAPI) => {
+    console.log(barberId, "fsdfsfdsf")
+    try {
+      await axios.delete(`http://localhost:5001/api/${endpoint.ADMIN.BARBER.DELETE(barberId)}`);
+      console.log(barberId , "barber id");
+      
+      return barberId;
+    } catch (error: any) {
+      console.log(error , " sdfghjkl ");
+      
+      return thunkAPI.rejectWithValue(error.response?.data?.message || 'Failed to delete barber');
+    }
+  }
+);
 
 const barberSlice = createSlice({
   name: 'barbers',
@@ -52,7 +70,15 @@ const barberSlice = createSlice({
       .addCase(fetchBarbers.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
-      });
+      })
+      
+      .addCase(deleteBarber.fulfilled, (state, action: PayloadAction<string>) => {
+        state.barbers = state.barbers.filter(barber => barber._id !== action.payload);
+      })
+      .addCase(deleteBarber.rejected, (state, action) => {
+        state.error = action.payload as string;
+      })
+      
   },
 });
 

@@ -12,6 +12,9 @@ const endpoint = {
     BARBER: {
         GET: '/get-employee'
     },
+    SERVICE: {
+        GET: '/get-service'
+    },
     ADMIN: {
         BARBER: {
             ADD: 'admin/add-employee'
@@ -73,28 +76,15 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
-"[project]/src/redux/app/store.ts [app-client] (ecmascript)": ((__turbopack_context__) => {
-"use strict";
+"[project]/src/redux/app/store.ts [app-client] (ecmascript)": (function(__turbopack_context__) {
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { g: global, __dirname, k: __turbopack_refresh__, m: module, e: exports } = __turbopack_context__;
 {
-__turbopack_context__.s({
-    "default": (()=>__TURBOPACK__default__export__)
-});
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$reduxjs$2f$toolkit$2f$dist$2f$redux$2d$toolkit$2e$modern$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/@reduxjs/toolkit/dist/redux-toolkit.modern.mjs [app-client] (ecmascript) <locals>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$features$2f$BarberSlice$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/redux/features/BarberSlice.tsx [app-client] (ecmascript)");
-;
-;
-const store = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$reduxjs$2f$toolkit$2f$dist$2f$redux$2d$toolkit$2e$modern$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["configureStore"])({
-    reducer: {
-        barber: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$features$2f$BarberSlice$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"]
-    }
-});
-const __TURBOPACK__default__export__ = store;
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
-}
-}}),
+const e = new Error(`Could not parse module '[project]/src/redux/app/store.ts'
+
+Expected ',', got 's'`);
+e.code = 'MODULE_UNPARSEABLE';
+throw e;}}),
 "[project]/src/redux/ReduxProvider.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
