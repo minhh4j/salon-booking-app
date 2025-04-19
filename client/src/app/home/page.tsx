@@ -4,8 +4,16 @@ import React from "react";
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="flex flex-col justify-center items-center h-[calc(100vh-100px)] text-center bg-[#1c1c15] text-gray-300">
-      <h1 className="text-5xl font-bold mb-4 text-[#C1A25D] tracking-wide">
+    <section
+      className="flex flex-col justify-center items-center h-[calc(120.5vh-150px)] text-center bg-cover bg-center bg-no-repeat text-gray-300"
+      style={{
+        backgroundImage: `
+          linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url('/hairdresser-cutting-man-s-hair-barber-shop (1).jpg')
+        `,
+      }}
+    >
+      <h1 className="text-5xl font-bold mb-4 text-[#f7ad0c] tracking-wide">
         STYLE YOUR HAIR
       </h1>
       <h2 className="text-3xl mb-8 text-gray-400">

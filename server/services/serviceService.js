@@ -70,6 +70,7 @@ export const updateService = async (serviceId, updateData) => {
         { $set: { ...updateData } },
         { new: true }
     );
+console.log(service);
 
     return service;
 };

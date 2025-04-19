@@ -17,10 +17,10 @@ const Navbar: React.FC = () => {
   },[user])
 
   return (
-    <nav className="flex justify-between items-center p-6 bg-[#312e15] text-gray-300 h-[100px] border-b-2 border-[#000000]">
+    <nav className="flex fixed w-full justify-between items-center p-6 bg-transparent  text-[#ffffff] h-[100px] ">
       {/* Logo */}
       <div className="logo">
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2b  ">
     <Image src="/beard2.png" alt="Thaadi" width={50} height={50} />
     <span className="modal-text">BAROZ</span>
 </div>
@@ -29,15 +29,15 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Navigation Links */}
-      <div className="nav-links space-x-6 text-lg">
+      <div className="nav-links space-x-10 text-sm">
         {[
           { href: "/", label: "HOME" },
           { href: "/about", label: "ABOUT" },
-          { href: "/booking", label: "BOOKING" },
+          { href: "/appointment", label: "BOOKING" },
           { href: "/barbers", label: "BARBERS" },
           { href: "/services", label: "SERVICES" },
         ].map((link) => (
-          <Link key={link.href} href={link.href} className="hover:text-[#C1A25D] transition">
+          <Link key={link.href} href={link.href} className="hover:text-[#b27546] transition">
             {link.label}
           </Link>
         ))}

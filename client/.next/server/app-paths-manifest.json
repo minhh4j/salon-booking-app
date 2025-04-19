@@ -1,8 +1,6 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/admin/barbers/[barberId]/barberprofileview/page": "app/admin/barbers/[barberId]/barberprofileview/page.js",
-  "/admin/barbers/page": "app/admin/barbers/page.js",
-  "/admin/page": "app/admin/page.js",
-  "/admin/services/page": "app/admin/services/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/barbers/page": "app/barbers/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js"
 }

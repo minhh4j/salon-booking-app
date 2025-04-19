@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import ReduxProvider from "@/redux/ReduxProvider";
+import Navbar from "./components/layout/Navbar";
 
 
 const geistSans = Geist({

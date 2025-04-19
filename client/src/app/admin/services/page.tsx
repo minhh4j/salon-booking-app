@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/redux/app/store";
-import { fetchServices, deleteService } from "../../../redux/features/ServicesSlice";
+import { fetchServices, deleteService , addService } from "../../../redux/features/ServicesSlice";
 import {
   Drawer,
   DrawerClose,
@@ -28,6 +28,45 @@ interface Service {
 const ServiceManagement: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const { service, loading, error } = useSelector((state: RootState) => state.service);
+
+  const [formData , setFormData] = useState({
+    serviceName: "",
+    serviceCharge: "",
+    image: "",
+    duration: "",
+    serviceDescription: ""
+  })
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ): void => {
+    const { name, value, type } = e.target;
+  
+    if (type === "file") {
+      const target = e.target as HTMLInputElement;
+      if (target.files && target.files[0]) {
+        setFormData({ ...formData, [name]: target.files[0] });
+      }
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  };
+  
+
+  const handleSubmit = async (e : any) => {
+    e.preventDefault();
+  
+    const newService = {
+      ...formData,
+      serviceCharge: Number(formData.serviceCharge),
+    };
+  
+    const result = await dispatch(addService(newService));
+    if (addService.fulfilled.match(result)) {
+    }
+  };
+  
+  
 
   useEffect(() => {
     dispatch(fetchServices());
@@ -88,7 +127,7 @@ const ServiceManagement: React.FC = () => {
         <div>
           <label className="block text-sm text-gray-300 mb-1">Image URL</label>
           <input
-            type="text"
+            type="file"
             name="image"
             required
             className="w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white"
