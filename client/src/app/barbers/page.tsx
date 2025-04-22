@@ -41,7 +41,6 @@ const Barber = () => {
           <div key={barber._id} className="flex justify-center">
             <div
               className="w-52 p-4 rounded-3xl shadow-xl bg-[#2B2B2B]/80 border border-[#757442]/50 hover:scale-105 hover:shadow-[#757442]/50 transition-all duration-300 backdrop-blur-lg cursor-pointer"
-              onClick={() => router.push(`/admin/barbers/${barber._id}/barberprofileview`)}
             >
               {/* Image */}
               <div className="w-full h-40 overflow-hidden rounded-2xl mb-4 border border-[#D6D7D6]/10">

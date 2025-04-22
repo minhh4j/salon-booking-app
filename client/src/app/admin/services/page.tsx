@@ -99,7 +99,7 @@ const ServiceManagement: React.FC = () => {
 
       {/* Scrollable form */}
       <form
-        className="flex-1 px-6 overflow-y-auto space-y-4"
+        className=" no-scrollbar flex-1 px-6 overflow-y-auto space-y-4"
         onSubmit={(e) => e.preventDefault()}
       >
         <div>

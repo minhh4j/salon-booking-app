@@ -9,7 +9,7 @@ function Layout({ children }: { children: React.ReactNode }) {
       <aside className="w-64 bg-[#1B1B1A] text-white shadow-lg">
         <SideBar />
       </aside>
-     
+    
       <main className="flex-1 ml-0.5 overflow-auto ">
         {children}
       </main>

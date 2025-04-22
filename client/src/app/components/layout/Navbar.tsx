@@ -33,9 +33,9 @@ const Navbar: React.FC = () => {
         {[
           { href: "/", label: "HOME" },
           { href: "/about", label: "ABOUT" },
-          { href: "/appointment", label: "BOOKING" },
+          { href: "/appointment", label: "APPOINTMENT" },
           { href: "/barbers", label: "BARBERS" },
-          { href: "/services", label: "SERVICES" },
+          { href: "/bookinglist", label: "BOOKING" },
         ].map((link) => (
           <Link key={link.href} href={link.href} className="hover:text-[#b27546] transition">
             {link.label}

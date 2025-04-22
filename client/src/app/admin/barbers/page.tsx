@@ -54,7 +54,7 @@ const BarberManagement: React.FC = () => {
       </DrawerHeader>
 
       <form
-        className="flex-1 px-6 overflow-y-auto space-y-4"
+        className="flex-1 px-6 overflow-y-auto no-scrollbar space-y-4"
         onSubmit={(e) => e.preventDefault()}
       >
         {/* employeeName */}

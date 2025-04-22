@@ -1,9 +1,14 @@
-
-  
 const About = () => {
     return (
-      <section className="relative bg-gradient-to-br from-[#1B1B1A] via-[#2B2B2B] to-[#757442] text-[#D6D7D6] px-6 md:px-20 py-20 min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Soft glow background elements */}
+      <section
+      className="flex flex-col justify-center items-center h-[calc(120.5vh-150px)] text-center bg-cover bg-center bg-no-repeat text-gray-300 no-scrollbar "
+      style={{
+        backgroundImage: `
+          linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url('/young-man-barber-s-shop-getting-his-beard-trimmed.jpg')
+        `,
+      }}
+    >
         <div className="absolute top-[-80px] left-[-60px] w-80 h-80 bg-[#757442] opacity-20 rounded-full blur-3xl" />
         <div className="absolute bottom-[-80px] right-[-60px] w-80 h-80 bg-[#D6D7D6] opacity-10 rounded-full blur-3xl" />
   

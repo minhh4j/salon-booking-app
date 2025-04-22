@@ -79,7 +79,6 @@ const Barber = ()=>{
                         className: "flex justify-center",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "w-52 p-4 rounded-3xl shadow-xl bg-[#2B2B2B]/80 border border-[#757442]/50 hover:scale-105 hover:shadow-[#757442]/50 transition-all duration-300 backdrop-blur-lg cursor-pointer",
-                            onClick: ()=>router.push(`/admin/barbers/${barber._id}/barberprofileview`),
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "w-full h-40 overflow-hidden rounded-2xl mb-4 border border-[#D6D7D6]/10",
@@ -89,12 +88,12 @@ const Barber = ()=>{
                                         className: "object-cover w-full h-full hover:scale-110 transition-transform duration-300"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/barbers/page.tsx",
-                                        lineNumber: 48,
+                                        lineNumber: 47,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/barbers/page.tsx",
-                                    lineNumber: 47,
+                                    lineNumber: 46,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -105,7 +104,7 @@ const Barber = ()=>{
                                             children: barber.employeeName
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/barbers/page.tsx",
-                                            lineNumber: 57,
+                                            lineNumber: 56,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -113,7 +112,7 @@ const Barber = ()=>{
                                             children: barber.specialCut
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/barbers/page.tsx",
-                                            lineNumber: 58,
+                                            lineNumber: 57,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -124,7 +123,7 @@ const Barber = ()=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/barbers/page.tsx",
-                                            lineNumber: 59,
+                                            lineNumber: 58,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -132,13 +131,13 @@ const Barber = ()=>{
                                             children: barber.description
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/barbers/page.tsx",
-                                            lineNumber: 60,
+                                            lineNumber: 59,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/barbers/page.tsx",
-                                    lineNumber: 56,
+                                    lineNumber: 55,
                                     columnNumber: 15
                                 }, this)
                             ]

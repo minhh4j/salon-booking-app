@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { endpoint } from '../../app/api/endpoints';
-import { log } from 'console';
 export interface Barber {
   _id: string;
   employeeName: string;
@@ -26,7 +25,7 @@ const initialState: BarberState = {
 
 export const fetchBarbers = createAsyncThunk('barbers/fetchAll', async (_, thunkAPI) => {
   try {
-    const res = await axios.get(`http://localhost:5001/api/${endpoint.BARBER.GET}`);
+    const res = await axios.get(`http://localhost:5001/api${endpoint.BARBER.GET}`);
     return res.data.employees as Barber[];
   } catch (error: any) {
     console.log(error,"hh");

@@ -5,6 +5,11 @@ export const endpoint = {
     SERVICE: {
       GET: '/get-service',
     },
+    BOOKING:{
+      BOOK: '/book',
+      ALL_GET: '/allAppointment',
+      GET_BY_GET :(id) =>  `/my/${id}`,
+    },
     ADMIN: {
       BARBER: {
         ADD: '/add-employee',
@@ -16,4 +21,3 @@ export const endpoint = {
       }
     },
   };
-  

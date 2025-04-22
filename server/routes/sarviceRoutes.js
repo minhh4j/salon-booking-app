@@ -6,19 +6,20 @@ import {
   getServiceController,
   updateServiceController,
 } from "../controllers/serviceController.js";
+import { authMiddleware , isAdmin } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/add-service", (req,res,next) => {
+router.post("/add-service", isAdmin , (req,res,next) => {
   const uploadMiddleware = upload('service');
   uploadMiddleware.single('image')(req,res,next)
 }, addServiceController);
 
 
-router.get("/get-service", getServiceController);
-router.delete("/delete-service/:serviceId", deleteServiceController);
+router.get("/get-service" ,getServiceController);
+router.delete("/delete-service/:serviceId", isAdmin , deleteServiceController);
 
-router.put("/update-service/:serviceId",  (req,res,next) => {
+router.put("/update-service/:serviceId",  isAdmin ,  (req,res,next) => {
   const uploadMiddleware = upload('service');
   uploadMiddleware.single('image')(req,res,next)
 } , updateServiceController);
