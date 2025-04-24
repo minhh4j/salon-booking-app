@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 16, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Saloon%20Project/client/src/redux/app/store.ts"],"sourcesContent":["import { configureStore } from \"@reduxjs/toolkit\";\r\nimport  BarberSlice  from \"../features/BarberSlice\";\r\nconst store = configureStore({\r\n    reducer:{\r\n        barber:BarberSlice\r\n    }\r\n})\r\n\r\nexport type RootState = ReturnType<typeof store.getState>;\r\nexport type AppDispatch = typeof store.dispatch;\r\nexport default store ; "],"names":[],"mappings":";;;AAAA;AACA;;;AACA,MAAM,QAAQ,CAAA,GAAA,8LAAA,CAAA,iBAAc,AAAD,EAAE;IACzB,SAAQ;QACJ,QAAO,2IAAA,CAAA,UAAW;IACtB;AACJ;uCAIe","debugId":null}},
-    {"offset": {"line": 38, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Saloon%20Project/client/src/redux/ReduxProvider.tsx"],"sourcesContent":["\"use client\";\r\nimport { ReactNode, FC } from \"react\";\r\nimport { Provider } from \"react-redux\";\r\nimport store from \"./app/store\";\r\n\r\n\r\ninterface StoreProviderProps {\r\n    children: ReactNode;\r\n}\r\n\r\nconst ReduxProvider: FC<StoreProviderProps> = ({ children }) => {\r\n    return <Provider store={store}>{children}</Provider>;\r\n};\r\n\r\nexport default ReduxProvider;"],"names":[],"mappings":";;;;AAEA;AACA;AAHA;;;;AAUA,MAAM,gBAAwC,CAAC,EAAE,QAAQ,EAAE;IACvD,qBAAO,6LAAC,4JAAA,CAAA,WAAQ;QAAC,OAAO,+HAAA,CAAA,UAAK;kBAAG;;;;;;AACpC;KAFM;uCAIS","debugId":null}}]
-}

@@ -361,9 +361,15 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$calendar$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/calendar.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$drawer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/drawer.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/button.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-redux/dist/react-redux.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$features$2f$AppoinmentSlice$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/redux/features/AppoinmentSlice.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
+;
+;
 ;
 ;
 ;
@@ -385,40 +391,77 @@ const generateTimeSlots = ()=>{
 };
 const Appointment = ()=>{
     _s();
-    const [date, setDate] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].useState(new Date());
-    const [openDrawer, setOpenDrawer] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].useState(false);
-    const [selectedSlot, setSelectedSlot] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].useState("");
+    const [date, setDate] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(new Date());
+    const [openDrawer, setOpenDrawer] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [selectedSlots, setSelectedSlots] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [bookedSlots, setBookedSlots] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const dispatch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDispatch"])();
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const timeSlots = generateTimeSlots();
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "Appointment.useEffect": ()=>{
+            if (date) {
+                localStorage.setItem("date", date.toISOString());
+            }
+            localStorage.setItem("timeslots", JSON.stringify(selectedSlots));
+        }
+    }["Appointment.useEffect"], [
+        date,
+        selectedSlots
+    ]);
     const handleDateSelect = (selectedDate)=>{
+        // const bookDate = moment(selectedDate).format('YYYY-MM-DD')
         setDate(selectedDate);
-        setSelectedSlot("");
+        setSelectedSlots([]);
         setOpenDrawer(true);
+        const allAppointments = JSON.parse(localStorage.getItem("appointments") || "[]");
+        const formattedDate = selectedDate?.toISOString().split("T")[0];
+        const bookedForSelectedDate = allAppointments.filter((a)=>a.date === formattedDate).map((a)=>a.timeSlot);
+        setBookedSlots(bookedForSelectedDate);
+    };
+    const handleSlotToggle = (slot)=>{
+        setSelectedSlots((prev)=>prev.includes(slot) ? prev.filter((s)=>s !== slot) : [
+                ...prev,
+                slot
+            ]);
+    };
+    const handleConfirm = ()=>{
+        const userId = localStorage.getItem("userId");
+        const barberId = localStorage.getItem("barberId");
+        const serviceId = JSON.parse(localStorage.getItem("serviceId") || "[]");
+        const price = Number(localStorage.getItem("price"));
+        const date = localStorage.getItem("date");
+        if (!userId || !barberId || !serviceId.length || !date || !selectedSlots.length || !price) {
+            alert("Missing required fields.");
+            return;
+        }
+        const payload = {
+            userId,
+            barberId,
+            serviceId,
+            date,
+            timeSlot: selectedSlots[0],
+            price,
+            status: "pending",
+            paymentStatus: "unpaid"
+        };
+        console.log("Sending payload:", payload);
+        dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$features$2f$AppoinmentSlice$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createAppointment"])(payload));
+        setOpenDrawer(false);
+        localStorage.clear();
+        router.push("/displaybookings");
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "bg-[#1B1B1A] min-h-screen p-6 flex flex-col justify-center items-center text-white space-y-8",
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                className: " text-[#D6D7D6] text-3xl font-extrabold tracking-wide text-center",
-                children: "Book Your Appointment"
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$calendar$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Calendar"], {
+                mode: "single",
+                selected: date,
+                onSelect: handleDateSelect,
+                className: "rounded-xl border border-[#494831] bg-[#252525] text-white shadow-md scale-150"
             }, void 0, false, {
                 fileName: "[project]/src/app/appointment/page.tsx",
-                lineNumber: 53,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$calendar$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Calendar"], {
-                    mode: "single",
-                    selected: date,
-                    onSelect: handleDateSelect,
-                    className: "rounded-xl border border-[#494831] bg-[#252525] text-white shadow-md scale-150"
-                }, void 0, false, {
-                    fileName: "[project]/src/app/appointment/page.tsx",
-                    lineNumber: 59,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/src/app/appointment/page.tsx",
-                lineNumber: 58,
+                lineNumber: 111,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$drawer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Drawer"], {
@@ -431,10 +474,10 @@ const Appointment = ()=>{
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$drawer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DrawerTitle"], {
                                     className: "text-[#D6D7D6] text-lg font-semibold",
-                                    children: "Choose Time Slot"
+                                    children: "Choose Time Slot(s)"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/appointment/page.tsx",
-                                    lineNumber: 71,
+                                    lineNumber: 121,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$drawer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DrawerDescription"], {
@@ -442,42 +485,46 @@ const Appointment = ()=>{
                                     children: date?.toDateString()
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/appointment/page.tsx",
-                                    lineNumber: 74,
+                                    lineNumber: 124,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/appointment/page.tsx",
-                            lineNumber: 70,
+                            lineNumber: 120,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "grid grid-cols-10 gap-2 px-1 py-1",
-                            children: timeSlots.map((slot, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                            children: timeSlots.map((slot, idx)=>{
+                                const isBooked = bookedSlots.includes(slot);
+                                return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                     variant: "ghost",
-                                    className: `text-sm py-1 px-1 rounded-lg border ${selectedSlot === slot ? "bg-[#757442] text-black" : "border-[#757442] text-white hover:bg-[#3c3c3c]"}`,
-                                    onClick: ()=>setSelectedSlot(slot),
+                                    disabled: isBooked,
+                                    className: `text-sm py-1 px-1 rounded-lg border ${selectedSlots.includes(slot) ? "bg-[#757442] text-black" : "border-[#757442] text-white hover:bg-[#3c3c3c]"} ${isBooked ? "opacity-50 cursor-not-allowed" : ""}`,
+                                    onClick: ()=>!isBooked && handleSlotToggle(slot),
                                     children: slot
                                 }, idx, false, {
                                     fileName: "[project]/src/app/appointment/page.tsx",
-                                    lineNumber: 81,
-                                    columnNumber: 15
-                                }, this))
+                                    lineNumber: 133,
+                                    columnNumber: 17
+                                }, this);
+                            })
                         }, void 0, false, {
                             fileName: "[project]/src/app/appointment/page.tsx",
-                            lineNumber: 79,
+                            lineNumber: 129,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$drawer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DrawerFooter"], {
                             className: "px-1 pt-1",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                    onClick: ()=>selectedSlot ? alert(`Appointment booked for ${date?.toDateString()} at ${selectedSlot}`) : alert("Please select a time slot."),
+                                    onClick: handleConfirm,
                                     className: "bg-[#757442] text-black w-full",
                                     children: "Confirm"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/appointment/page.tsx",
-                                    lineNumber: 97,
+                                    lineNumber: 151,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$drawer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DrawerClose"], {
@@ -488,39 +535,44 @@ const Appointment = ()=>{
                                         children: "Cancel"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/appointment/page.tsx",
-                                        lineNumber: 110,
+                                        lineNumber: 155,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/appointment/page.tsx",
-                                    lineNumber: 109,
+                                    lineNumber: 154,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/appointment/page.tsx",
-                            lineNumber: 96,
+                            lineNumber: 150,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/appointment/page.tsx",
-                    lineNumber: 69,
+                    lineNumber: 119,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/appointment/page.tsx",
-                lineNumber: 68,
+                lineNumber: 118,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/appointment/page.tsx",
-        lineNumber: 51,
+        lineNumber: 110,
         columnNumber: 5
     }, this);
 };
-_s(Appointment, "t423/gV296mDc2FoJYM81Ht/mCQ=");
+_s(Appointment, "ckb+adnwJzfjiQW3zZWKPc6n8z4=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDispatch"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
+    ];
+});
 _c = Appointment;
 const __TURBOPACK__default__export__ = Appointment;
 var _c;

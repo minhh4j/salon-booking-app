@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import  BarberSlice  from "../features/BarberSlice";
 import ServiceSlice  from "../features/ServicesSlice"
+import AppointmentReducer from "../features/AppoinmentSlice"
 const store = configureStore({
     reducer:{
         barber:BarberSlice,
-        service:ServiceSlice
+        service:ServiceSlice,
+        appointment: AppointmentReducer, 
     }
 })
 

@@ -3,6 +3,7 @@ import Appointment from '../models/appoimentModal.js';
 // Create appointment
 export const createAppointment = async (appointmentData) => {
   const { barberId, date, timeSlot , userId } = appointmentData;
+  console.log(userId,'haii')
 
   const existingAppointment = await Appointment.findOne({
     barberId,
@@ -19,12 +20,12 @@ export const createAppointment = async (appointmentData) => {
   return await appointment.save();
 };
 
-
 export const getAppointmentsByUser = async (userId) => {
   const appointments = await Appointment.find({ userId })
-    .populate("barberId")
-    .populate("serviceId");
-  return appointments;
+  .populate("userId", "email fullName") 
+  .populate("barberId")
+  .populate("serviceId");
+ return appointments ;
 };
 
 
@@ -32,7 +33,6 @@ export const getAppointmentsByUser = async (userId) => {
 
 export const fetchAllAppointments = async () => {
   return await Appointment.find()
-    .populate("userId")
     .populate("barberId")
     .populate("serviceId");
 };

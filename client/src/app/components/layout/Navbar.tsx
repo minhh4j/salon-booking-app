@@ -22,20 +22,19 @@ const Navbar: React.FC = () => {
       <div className="logo">
       <div className="flex items-center gap-2b  ">
     <Image src="/beard2.png" alt="Thaadi" width={50} height={50} />
-    <span className="modal-text">BAROZ</span>
+    <span className="modal-text">New Cut</span>
 </div>
 
 
       </div>
-
       {/* Navigation Links */}
       <div className="nav-links space-x-10 text-sm">
         {[
           { href: "/", label: "HOME" },
           { href: "/about", label: "ABOUT" },
-          { href: "/appointment", label: "APPOINTMENT" },
+          { href: "/displaybookings", label: "BOOKINGLIST" },
           { href: "/barbers", label: "BARBERS" },
-          { href: "/bookinglist", label: "BOOKING" },
+          { href: "/bookinglist", label: "APPOINTMENT" },
         ].map((link) => (
           <Link key={link.href} href={link.href} className="hover:text-[#b27546] transition">
             {link.label}
@@ -50,7 +49,7 @@ const Navbar: React.FC = () => {
         ) : isSignedIn && user ? (
           <div className="flex items-center gap-4">
             <UserButton />
-            <span className="text-sm">{user.fullName || user.primaryEmailAddress?.emailAddress}</span>
+            <span className="text-sm">{user.firstName  || user.primaryEmailAddress?.emailAddress}</span>
           </div>
         ) : (
           <div className="profile">

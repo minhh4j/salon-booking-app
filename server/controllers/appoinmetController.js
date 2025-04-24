@@ -18,16 +18,17 @@ export const bookAppointment = asyncHandler(async (req, res) => {
 
 
 export const getAppointments = asyncHandler(async (req, res) => {
-    const { userId } = req.params;
-  
-    if (!userId) {
-      res.status(400);
-      throw new Error("User ID is required in params");
-    }
-  
-    const appointments = await getAppointmentsByUser(userId);
-    res.status(200).json(appointments);
-  });
+  const { userId } = req.params;
+
+  if (!userId) {
+    res.status(400);
+    throw new Error("User ID is required in params");
+  }
+
+  const appointments = await getAppointmentsByUser(userId);
+  res.status(200).json(appointments);
+});
+
   
   export const getAllAppointments = asyncHandler(async (req, res) => {
     const appointments = await fetchAllAppointments();
