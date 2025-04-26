@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/redux/app/store";
-import { fetchServices, deleteService , addService } from "../../../redux/features/ServicesSlice";
+import { fetchServices, deleteService, addService } from "../../../redux/features/ServicesSlice";
 import {
   Drawer,
   DrawerClose,
@@ -29,19 +29,19 @@ const ServiceManagement: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const { service, loading, error } = useSelector((state: RootState) => state.service);
 
-  const [formData , setFormData] = useState({
+  const [formData, setFormData] = useState({
     serviceName: "",
     serviceCharge: "",
-    image: "",
+    image: File || null,
     duration: "",
     serviceDescription: ""
-  })
+  });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ): void => {
     const { name, value, type } = e.target;
-  
+
     if (type === "file") {
       const target = e.target as HTMLInputElement;
       if (target.files && target.files[0]) {
@@ -51,22 +51,25 @@ const ServiceManagement: React.FC = () => {
       setFormData({ ...formData, [name]: value });
     }
   };
-  
 
-  const handleSubmit = async (e : any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-  
-    const newService = {
-      ...formData,
-      serviceCharge: Number(formData.serviceCharge),
-    };
-  
-    const result = await dispatch(addService(newService));
-    if (addService.fulfilled.match(result)) {
-    }
+    const formDataa = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      formDataa.append(key, value);
+    });
+
+    setFormData({
+      serviceName: "",
+      serviceCharge: "",
+      image: File || null,
+      duration: "",
+      serviceDescription: ""
+    })
+
+    console.log(formDataa, "dvhbjnmk");
+
   };
-  
-  
 
   useEffect(() => {
     dispatch(fetchServices());
@@ -80,110 +83,116 @@ const ServiceManagement: React.FC = () => {
 
   return (
     <div className="w-full px-4 py-6 bg-[#2B2B2B] min-h-screen">
+      <Drawer>
+        <DrawerTrigger>
+          <Button className="bg-white text-black hover:bg-gray-200">Add Service</Button>
+        </DrawerTrigger>
 
-<Drawer>
-  <DrawerTrigger>
-    <Button className="bg-white text-black hover:bg-gray-200">Add Service</Button>
-  </DrawerTrigger>
+        <DrawerContent className="bg-black text-[#EDEDED] border border-[#2B2B2B] max-w-lg mx-auto h-[85vh] overflow-hidden rounded-t-2xl">
+          <div className="flex flex-col h-full">
+            <DrawerHeader className="px-6 pt-6 pb-3 shrink-0">
+              <DrawerTitle className="text-lg font-semibold text-[#F5F5F5]">
+                Add a New Service
+              </DrawerTitle>
+              <DrawerDescription className="text-sm text-gray-400">
+                Fill out the form below to add a new service offering.
+              </DrawerDescription>
+            </DrawerHeader>
 
-  <DrawerContent className="bg-black text-[#EDEDED] border border-[#2B2B2B] max-w-lg mx-auto h-[85vh] overflow-hidden rounded-t-2xl">
-    <div className="flex flex-col h-full">
-      <DrawerHeader className="px-6 pt-6 pb-3 shrink-0">
-        <DrawerTitle className="text-lg font-semibold text-[#F5F5F5]">
-          Add a New Service
-        </DrawerTitle>
-        <DrawerDescription className="text-sm text-gray-400">
-          Fill out the form below to add a new service offering.
-        </DrawerDescription>
-      </DrawerHeader>
+            {/* Scrollable form */}
+            <form
+              className="no-scrollbar flex-1 px-6 overflow-y-auto space-y-4"
+              onSubmit={handleSubmit}
+            >
+              <div>
+                <label className="block text-sm text-gray-300 mb-1">Service Name</label>
+                <input
+                  type="text"
+                  name="serviceName"
+                  required
+                  value={formData.serviceName}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white"
+                  placeholder="e.g. Haircut"
+                />
+              </div>
 
-      {/* Scrollable form */}
-      <form
-        className=" no-scrollbar flex-1 px-6 overflow-y-auto space-y-4"
-        onSubmit={(e) => e.preventDefault()}
-      >
-        <div>
-          <label className="block text-sm text-gray-300 mb-1">Service Name</label>
-          <input
-            type="text"
-            name="serviceName"
-            required
-            className="w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white"
-            placeholder="e.g. Haircut"
-          />
-        </div>
+              <div>
+                <label className="block text-sm text-gray-300 mb-1">Service Charge (₹)</label>
+                <input
+                  type="number"
+                  name="serviceCharge"
+                  required
+                  value={formData.serviceCharge}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white"
+                  placeholder="e.g. 499"
+                />
+              </div>
 
-        <div>
-          <label className="block text-sm text-gray-300 mb-1">Service Charge (₹)</label>
-          <input
-            type="text"
-            name="serviceCharge"
-            required
-            className="w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white"
-            placeholder="e.g. 499"
-          />
-        </div>
+              <div>
+                <label className="block text-sm text-gray-300 mb-1">Image</label>
+                <input
+                  type="file"
+                  name="image"
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white"
+                />
+              </div>
 
-        <div>
-          <label className="block text-sm text-gray-300 mb-1">Image URL</label>
-          <input
-            type="file"
-            name="image"
-            required
-            className="w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white"
-            placeholder="https://example.com/image.jpg"
-          />
-        </div>
+              <div>
+                <label className="block text-sm text-gray-300 mb-1">Duration</label>
+                <input
+                  type="number"
+                  name="duration"
+                  required
+                  value={formData.duration}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white"
+                  placeholder="e.g. 30"
+                />
+              </div>
 
-        <div>
-          <label className="block text-sm text-gray-300 mb-1">Duration</label>
-          <input
-            type="text"
-            name="duration"
-            required
-            className="w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white"
-            placeholder="e.g. 30 mins"
-          />
-        </div>
+              <div>
+                <label className="block text-sm text-gray-300 mb-1">Description</label>
+                <textarea
+                  name="serviceDescription"
+                  rows={3}
+                  required
+                  value={formData.serviceDescription}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white"
+                  placeholder="Brief description of the service"
+                />
+              </div>
 
-        <div>
-          <label className="block text-sm text-gray-300 mb-1">Description</label>
-          <textarea
-            name="serviceDescription"
-            rows={3}
-            required
-            className="w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white"
-            placeholder="Brief description of the service"
-          />
-        </div>
+              <div className="h-24" />
+            </form>
 
-        <div className="h-24" />
-      </form>
 
-      {/* Sticky footer */}
-      <div className="px-6 pt-3 pb-6 border-t border-[#333] bg-black sticky bottom-0 shrink-0">
-        <div className="flex flex-col gap-3">
-          <Button
-            type="submit"
-            className="w-full bg-white text-black hover:bg-gray-200 transition font-medium"
-          >
-            Submit
-          </Button>
+            {/* Sticky footer */}
+            <div className="px-6 pt-3 pb-6 border-t border-[#333] bg-black sticky bottom-0 shrink-0">
+              <div className="flex flex-col gap-3">
+                <Button
+                  type="submit"
+                  className="w-full bg-white text-black hover:bg-gray-200 transition font-medium"
+                  onClick={handleSubmit}
+                >
+                  Submit
+                </Button>
 
-          <DrawerClose asChild>
-            <Button className="w-full bg-transparent border border-gray-500 text-white hover:bg-[#2B2B2B]">
-              Cancel
-            </Button>
-          </DrawerClose>
-        </div>
-      </div>
-    </div>
-  </DrawerContent>
-</Drawer>
+                <DrawerClose asChild>
+                  <Button className="w-full bg-transparent border border-gray-500 text-white hover:bg-[#2B2B2B]">
+                    Cancel
+                  </Button>
+                </DrawerClose>
+              </div>
+            </div>
+          </div>
+        </DrawerContent>
+      </Drawer>
 
-      <h2 className="text-3xl font-bold text-center text-[#D6D7D6] mb-10">
-        Our Services
-      </h2>
+      <h2 className="text-3xl font-bold text-center text-[#D6D7D6] mb-10">Our Services</h2>
 
       {loading && (
         <p className="text-center text-yellow-400 font-semibold">Loading...</p>
@@ -226,13 +235,12 @@ const ServiceManagement: React.FC = () => {
             </div>
           ))
         ) : (
-          <p className="col-span-full text-center text-gray-500 italic mt-6">
-            No services found.
-          </p>
+          <p className="col-span-full text-center text-gray-500 italic mt-6">No services found.</p>
         )}
       </div>
     </div>
   );
 };
+
 
 export default ServiceManagement;

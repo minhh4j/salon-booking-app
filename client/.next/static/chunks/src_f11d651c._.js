@@ -292,6 +292,15 @@ const BarberManagement = ()=>{
     const { barbers, loading, error } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelector"])({
         "BarberManagement.useSelector": (state)=>state.barber
     }["BarberManagement.useSelector"]);
+    const [barberData, setBarberData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
+        employeeName: "",
+        employeeImage: File || null,
+        duration: "",
+        employeeFees: "",
+        specialCut: "",
+        description: "",
+        isDeleted: false
+    });
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "BarberManagement.useEffect": ()=>{
@@ -300,6 +309,27 @@ const BarberManagement = ()=>{
     }["BarberManagement.useEffect"], [
         dispatch
     ]);
+    const handleSubmith = ()=>{
+        console.log("Submitting barber data:", barberData);
+        const formData = new FormData();
+        Object.entries(barberData).forEach(([key, value])=>{
+            formData.append(key, value);
+        });
+        dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$features$2f$BarberSlice$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["addBarber"])(formData)).unwrap().then(()=>{
+            console.log("Barber added successfully!");
+            setBarberData({
+                employeeName: "",
+                employeeImage: File || null,
+                duration: "",
+                employeeFees: "",
+                specialCut: "",
+                description: "",
+                isDeleted: false
+            });
+        }).catch((error)=>{
+            console.error("Failed to add barber:", error);
+        });
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "w-full min-h-screen px-4 py-10 bg-[#1B1B1A] text-[#D6D7D6]",
         children: [
@@ -311,13 +341,13 @@ const BarberManagement = ()=>{
                             children: "Add Employee"
                         }, void 0, false, {
                             fileName: "[project]/src/app/admin/barbers/page.tsx",
-                            lineNumber: 42,
-                            columnNumber: 5
+                            lineNumber: 83,
+                            columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/admin/barbers/page.tsx",
-                        lineNumber: 41,
-                        columnNumber: 3
+                        lineNumber: 82,
+                        columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$drawer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DrawerContent"], {
                         className: "bg-black text-[#EDEDED] border border-[#2B2B2B] max-w-lg mx-auto h-[85vh] overflow-hidden rounded-t-2xl",
@@ -332,22 +362,22 @@ const BarberManagement = ()=>{
                                             children: "Add a New Employee"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                            lineNumber: 48,
-                                            columnNumber: 9
+                                            lineNumber: 89,
+                                            columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$drawer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DrawerDescription"], {
                                             className: "text-sm text-gray-400",
                                             children: "Fill out the form below to add a new employee."
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                            lineNumber: 51,
-                                            columnNumber: 9
+                                            lineNumber: 92,
+                                            columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                    lineNumber: 47,
-                                    columnNumber: 7
+                                    lineNumber: 88,
+                                    columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
                                     className: "flex-1 px-6 overflow-y-auto no-scrollbar space-y-4",
@@ -360,52 +390,68 @@ const BarberManagement = ()=>{
                                                     children: "Employee Name"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                                    lineNumber: 62,
-                                                    columnNumber: 11
+                                                    lineNumber: 103,
+                                                    columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                     type: "text",
                                                     name: "employeeName",
+                                                    value: barberData.employeeName,
+                                                    onChange: (e)=>{
+                                                        setBarberData({
+                                                            ...barberData,
+                                                            employeeName: e.target.value
+                                                        });
+                                                    },
                                                     required: true,
-                                                    placeholder: "e.g. John Doe",
+                                                    placeholder: "Enter barbar name",
                                                     className: "w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                                    lineNumber: 63,
-                                                    columnNumber: 11
+                                                    lineNumber: 104,
+                                                    columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                            lineNumber: 61,
-                                            columnNumber: 9
+                                            lineNumber: 102,
+                                            columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                     className: "block text-sm text-gray-300 mb-1",
-                                                    children: "Employee Image URL"
+                                                    children: "Employee Image"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                                    lineNumber: 74,
-                                                    columnNumber: 11
+                                                    lineNumber: 119,
+                                                    columnNumber: 3
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                    type: "text",
+                                                    type: "file",
                                                     name: "employeeImage",
+                                                    accept: "image/*",
+                                                    onChange: (e)=>{
+                                                        const file = e.target.files?.[0];
+                                                        if (file) {
+                                                            setBarberData({
+                                                                ...barberData,
+                                                                employeeImage: file
+                                                            });
+                                                        }
+                                                    },
                                                     required: true,
-                                                    placeholder: "https://img.com/photo.jpg",
                                                     className: "w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                                    lineNumber: 75,
-                                                    columnNumber: 11
+                                                    lineNumber: 120,
+                                                    columnNumber: 3
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                            lineNumber: 73,
-                                            columnNumber: 9
+                                            lineNumber: 118,
+                                            columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             children: [
@@ -414,25 +460,32 @@ const BarberManagement = ()=>{
                                                     children: "Duration"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                                    lineNumber: 86,
-                                                    columnNumber: 11
+                                                    lineNumber: 138,
+                                                    columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                     type: "text",
                                                     name: "duration",
+                                                    value: barberData.duration,
+                                                    onChange: (e)=>{
+                                                        setBarberData({
+                                                            ...barberData,
+                                                            duration: e.target.value
+                                                        });
+                                                    },
                                                     required: true,
                                                     placeholder: "e.g. 1 hour",
                                                     className: "w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                                    lineNumber: 87,
-                                                    columnNumber: 11
+                                                    lineNumber: 139,
+                                                    columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                            lineNumber: 85,
-                                            columnNumber: 9
+                                            lineNumber: 137,
+                                            columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             children: [
@@ -441,26 +494,33 @@ const BarberManagement = ()=>{
                                                     children: "Employee Fees (₹)"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                                    lineNumber: 98,
-                                                    columnNumber: 11
+                                                    lineNumber: 155,
+                                                    columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                     type: "number",
                                                     name: "employeeFees",
+                                                    value: barberData.employeeFees,
+                                                    onChange: (e)=>{
+                                                        setBarberData({
+                                                            ...barberData,
+                                                            employeeFees: e.target.value
+                                                        });
+                                                    },
                                                     required: true,
                                                     min: 0,
                                                     placeholder: "e.g. 299",
                                                     className: "w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                                    lineNumber: 99,
-                                                    columnNumber: 11
+                                                    lineNumber: 156,
+                                                    columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                            lineNumber: 97,
-                                            columnNumber: 9
+                                            lineNumber: 154,
+                                            columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             children: [
@@ -469,25 +529,32 @@ const BarberManagement = ()=>{
                                                     children: "Special Cut"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                                    lineNumber: 111,
-                                                    columnNumber: 11
+                                                    lineNumber: 173,
+                                                    columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                     type: "text",
                                                     name: "specialCut",
+                                                    value: barberData.specialCut,
+                                                    onChange: (e)=>{
+                                                        setBarberData({
+                                                            ...barberData,
+                                                            specialCut: e.target.value
+                                                        });
+                                                    },
                                                     required: true,
                                                     placeholder: "e.g. Skin Fade",
                                                     className: "w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                                    lineNumber: 112,
-                                                    columnNumber: 11
+                                                    lineNumber: 174,
+                                                    columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                            lineNumber: 110,
-                                            columnNumber: 9
+                                            lineNumber: 172,
+                                            columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             children: [
@@ -496,38 +563,45 @@ const BarberManagement = ()=>{
                                                     children: "Description"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                                    lineNumber: 123,
-                                                    columnNumber: 11
+                                                    lineNumber: 190,
+                                                    columnNumber: 17
                                                 }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
-                                                    name: "description",
-                                                    rows: 3,
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                    type: "text",
+                                                    name: "specialCut",
+                                                    value: barberData.description,
+                                                    onChange: (e)=>{
+                                                        setBarberData({
+                                                            ...barberData,
+                                                            description: e.target.value
+                                                        });
+                                                    },
                                                     required: true,
-                                                    placeholder: "e.g. Expert in classic cuts",
+                                                    placeholder: "e.g. Skin Fade",
                                                     className: "w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                                    lineNumber: 124,
-                                                    columnNumber: 11
+                                                    lineNumber: 191,
+                                                    columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                            lineNumber: 122,
-                                            columnNumber: 9
+                                            lineNumber: 189,
+                                            columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "h-24"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                            lineNumber: 133,
-                                            columnNumber: 9
+                                            lineNumber: 205,
+                                            columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                    lineNumber: 56,
-                                    columnNumber: 7
+                                    lineNumber: 97,
+                                    columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "px-6 pt-3 pb-6 border-t border-[#333] bg-black sticky bottom-0 shrink-0",
@@ -537,11 +611,12 @@ const BarberManagement = ()=>{
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                                 type: "submit",
                                                 className: "w-full bg-white text-black hover:bg-gray-200 transition font-medium",
+                                                onClick: handleSubmith,
                                                 children: "Submit"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                                lineNumber: 138,
-                                                columnNumber: 11
+                                                lineNumber: 210,
+                                                columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$drawer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DrawerClose"], {
                                                 asChild: true,
@@ -550,48 +625,48 @@ const BarberManagement = ()=>{
                                                     children: "Cancel"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                                    lineNumber: 146,
-                                                    columnNumber: 13
+                                                    lineNumber: 219,
+                                                    columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                                lineNumber: 145,
-                                                columnNumber: 11
+                                                lineNumber: 218,
+                                                columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                        lineNumber: 137,
-                                        columnNumber: 9
+                                        lineNumber: 209,
+                                        columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                    lineNumber: 136,
-                                    columnNumber: 7
+                                    lineNumber: 208,
+                                    columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/admin/barbers/page.tsx",
-                            lineNumber: 46,
-                            columnNumber: 5
+                            lineNumber: 87,
+                            columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/admin/barbers/page.tsx",
-                        lineNumber: 45,
-                        columnNumber: 3
+                        lineNumber: 86,
+                        columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/admin/barbers/page.tsx",
-                lineNumber: 40,
-                columnNumber: 1
+                lineNumber: 81,
+                columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                 className: "text-2xl font-bold text-center text-[#D6D7D6] mb-8",
                 children: "Our Barbers"
             }, void 0, false, {
                 fileName: "[project]/src/app/admin/barbers/page.tsx",
-                lineNumber: 156,
+                lineNumber: 229,
                 columnNumber: 7
             }, this),
             loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -599,7 +674,7 @@ const BarberManagement = ()=>{
                 children: "Loading..."
             }, void 0, false, {
                 fileName: "[project]/src/app/admin/barbers/page.tsx",
-                lineNumber: 159,
+                lineNumber: 232,
                 columnNumber: 19
             }, this),
             error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -607,7 +682,7 @@ const BarberManagement = ()=>{
                 children: error
             }, void 0, false, {
                 fileName: "[project]/src/app/admin/barbers/page.tsx",
-                lineNumber: 160,
+                lineNumber: 233,
                 columnNumber: 17
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -626,12 +701,12 @@ const BarberManagement = ()=>{
                                         className: "object-cover w-full h-full"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                        lineNumber: 170,
+                                        lineNumber: 243,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                    lineNumber: 169,
+                                    lineNumber: 242,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -642,7 +717,7 @@ const BarberManagement = ()=>{
                                             children: barber.employeeName
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                            lineNumber: 179,
+                                            lineNumber: 252,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -650,7 +725,7 @@ const BarberManagement = ()=>{
                                             children: barber.specialCut
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                            lineNumber: 180,
+                                            lineNumber: 253,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -661,7 +736,7 @@ const BarberManagement = ()=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                            lineNumber: 181,
+                                            lineNumber: 254,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -669,39 +744,39 @@ const BarberManagement = ()=>{
                                             children: barber.description
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                            lineNumber: 182,
+                                            lineNumber: 255,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/admin/barbers/page.tsx",
-                                    lineNumber: 178,
+                                    lineNumber: 251,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/admin/barbers/page.tsx",
-                            lineNumber: 166,
+                            lineNumber: 239,
                             columnNumber: 13
                         }, this)
                     }, barber._id, false, {
                         fileName: "[project]/src/app/admin/barbers/page.tsx",
-                        lineNumber: 165,
+                        lineNumber: 238,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/app/admin/barbers/page.tsx",
-                lineNumber: 163,
+                lineNumber: 236,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/admin/barbers/page.tsx",
-        lineNumber: 38,
+        lineNumber: 79,
         columnNumber: 5
     }, this);
 };
-_s(BarberManagement, "8nc0ueuAzuqXVz6kHmA41uKXlMg=", false, function() {
+_s(BarberManagement, "ph3qk30Jhry68YGBUMelKEvgMPI=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDispatch"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelector"],

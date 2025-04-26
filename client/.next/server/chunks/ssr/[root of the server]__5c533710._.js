@@ -142,7 +142,7 @@ const endpoint = {
     },
     ADMIN: {
         BARBER: {
-            ADD: '/add-employee',
+            ADD: 'add-employee',
             DELETE: (id)=>`/delete-employee/${id}`
         },
         SERVICE: {
@@ -158,6 +158,7 @@ const endpoint = {
 var { g: global, __dirname } = __turbopack_context__;
 {
 __turbopack_context__.s({
+    "addBarber": (()=>addBarber),
     "default": (()=>__TURBOPACK__default__export__),
     "deleteBarber": (()=>deleteBarber),
     "fetchBarbers": (()=>fetchBarbers)
@@ -193,6 +194,18 @@ const deleteBarber = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_mo
         return thunkAPI.rejectWithValue(error.response?.data?.message || 'Failed to delete barber');
     }
 });
+const addBarber = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$reduxjs$2f$toolkit$2f$dist$2f$redux$2d$toolkit$2e$modern$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["createAsyncThunk"])('barbers/addBarber', async (barberData, thunkAPI)=>{
+    console.log(barberData, "cvbkl");
+    try {
+        console.log("ggghhj");
+        const response = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].post(`http://localhost:5001/api/${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$api$2f$endpoints$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["endpoint"].ADMIN.BARBER.ADD}`, barberData);
+        console.log();
+        return response.data;
+    } catch (error) {
+        console.log(error);
+        return thunkAPI.rejectWithValue(error.response?.data?.message || 'Failed to add barber');
+    }
+});
 const barberSlice = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$reduxjs$2f$toolkit$2f$dist$2f$redux$2d$toolkit$2e$modern$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["createSlice"])({
     name: 'barbers',
     initialState,
@@ -210,6 +223,15 @@ const barberSlice = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_mod
         }).addCase(deleteBarber.fulfilled, (state, action)=>{
             state.barbers = state.barbers.filter((barber)=>barber._id !== action.payload);
         }).addCase(deleteBarber.rejected, (state, action)=>{
+            state.error = action.payload;
+        }).addCase(addBarber.pending, (state)=>{
+            state.loading = true;
+            state.error = null;
+        }).addCase(addBarber.fulfilled, (state, action)=>{
+            state.loading = false;
+            state.barbers.push(action.payload);
+        }).addCase(addBarber.rejected, (state, action)=>{
+            state.loading = false;
             state.error = action.payload;
         });
     }

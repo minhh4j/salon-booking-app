@@ -1,10 +1,13 @@
 {
+  "/(user)/about/page": "app/(user)/about/page.js",
+  "/(user)/barbers/page": "app/(user)/barbers/page.js",
+  "/(user)/bookinglist/page": "app/(user)/bookinglist/page.js",
+  "/(user)/displaybookings/page": "app/(user)/displaybookings/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/admin/barbers/[barberId]/barberprofileview/page": "app/admin/barbers/[barberId]/barberprofileview/page.js",
   "/admin/barbers/page": "app/admin/barbers/page.js",
   "/admin/page": "app/admin/page.js",
   "/admin/services/page": "app/admin/services/page.js",
-  "/appointment/page": "app/appointment/page.js",
-  "/bookinglist/page": "app/bookinglist/page.js",
-  "/displaybookings/page": "app/displaybookings/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/page": "app/page.js"
 }

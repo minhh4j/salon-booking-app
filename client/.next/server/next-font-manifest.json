@@ -1,5 +1,29 @@
 {
   "app": {
+    "[project]/src/app/(user)/about/page": [
+      "static/media/or3nQ6H_1_WfwkMZI_qYFrcdmhHkjko-s.p.be19f591.woff2",
+      "static/media/gyByhwUxId8gMEwcGFWNOITd-s.p.da1ebef7.woff2"
+    ],
+    "[project]/src/app/(user)/barbers/page": [
+      "static/media/or3nQ6H_1_WfwkMZI_qYFrcdmhHkjko-s.p.be19f591.woff2",
+      "static/media/gyByhwUxId8gMEwcGFWNOITd-s.p.da1ebef7.woff2"
+    ],
+    "[project]/src/app/(user)/bookinglist/page": [
+      "static/media/or3nQ6H_1_WfwkMZI_qYFrcdmhHkjko-s.p.be19f591.woff2",
+      "static/media/gyByhwUxId8gMEwcGFWNOITd-s.p.da1ebef7.woff2"
+    ],
+    "[project]/src/app/(user)/displaybookings/page": [
+      "static/media/or3nQ6H_1_WfwkMZI_qYFrcdmhHkjko-s.p.be19f591.woff2",
+      "static/media/gyByhwUxId8gMEwcGFWNOITd-s.p.da1ebef7.woff2"
+    ],
+    "[project]/src/app/_not-found/page": [
+      "static/media/or3nQ6H_1_WfwkMZI_qYFrcdmhHkjko-s.p.be19f591.woff2",
+      "static/media/gyByhwUxId8gMEwcGFWNOITd-s.p.da1ebef7.woff2"
+    ],
+    "[project]/src/app/admin/barbers/[barberId]/barberprofileview/page": [
+      "static/media/or3nQ6H_1_WfwkMZI_qYFrcdmhHkjko-s.p.be19f591.woff2",
+      "static/media/gyByhwUxId8gMEwcGFWNOITd-s.p.da1ebef7.woff2"
+    ],
     "[project]/src/app/admin/barbers/page": [
       "static/media/or3nQ6H_1_WfwkMZI_qYFrcdmhHkjko-s.p.be19f591.woff2",
       "static/media/gyByhwUxId8gMEwcGFWNOITd-s.p.da1ebef7.woff2"
@@ -9,18 +33,6 @@
       "static/media/gyByhwUxId8gMEwcGFWNOITd-s.p.da1ebef7.woff2"
     ],
     "[project]/src/app/admin/services/page": [
-      "static/media/or3nQ6H_1_WfwkMZI_qYFrcdmhHkjko-s.p.be19f591.woff2",
-      "static/media/gyByhwUxId8gMEwcGFWNOITd-s.p.da1ebef7.woff2"
-    ],
-    "[project]/src/app/appointment/page": [
-      "static/media/or3nQ6H_1_WfwkMZI_qYFrcdmhHkjko-s.p.be19f591.woff2",
-      "static/media/gyByhwUxId8gMEwcGFWNOITd-s.p.da1ebef7.woff2"
-    ],
-    "[project]/src/app/bookinglist/page": [
-      "static/media/or3nQ6H_1_WfwkMZI_qYFrcdmhHkjko-s.p.be19f591.woff2",
-      "static/media/gyByhwUxId8gMEwcGFWNOITd-s.p.da1ebef7.woff2"
-    ],
-    "[project]/src/app/displaybookings/page": [
       "static/media/or3nQ6H_1_WfwkMZI_qYFrcdmhHkjko-s.p.be19f591.woff2",
       "static/media/gyByhwUxId8gMEwcGFWNOITd-s.p.da1ebef7.woff2"
     ],

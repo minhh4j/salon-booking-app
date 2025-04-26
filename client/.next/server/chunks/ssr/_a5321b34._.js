@@ -18,7 +18,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$clerk$2f$s
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$left$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronLeft$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/chevron-left.js [app-ssr] (ecmascript) <export default as ChevronLeft>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/chevron-right.js [app-ssr] (ecmascript) <export default as ChevronRight>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2d$big$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/circle-check-big.js [app-ssr] (ecmascript) <export default as CheckCircle>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/sonner/dist/index.mjs [app-ssr] (ecmascript)");
 "use client";
+;
 ;
 ;
 ;
@@ -40,6 +42,7 @@ const Bookinglist = ()=>{
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$features$2f$ServicesSlice$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchServices"])());
         dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$features$2f$BarberSlice$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchBarbers"])());
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].info("Select both barber and service");
     }, [
         dispatch
     ]);
@@ -58,15 +61,14 @@ const Bookinglist = ()=>{
             const totalPrice = selectedServiceDetails.reduce((acc, cur)=>acc + cur.serviceCharge, 0);
             localStorage.setItem("barberId", selectedBarbers[0]);
             localStorage.setItem("serviceId", JSON.stringify(selectedServices));
-            const data = localStorage.getItem("serviceId");
             localStorage.setItem("price", JSON.stringify(totalPrice));
             localStorage.setItem("userId", user?.id);
             setSelectedServices([]);
             setSelectedBarbers([]);
-            alert("Appointment saved successfully!");
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].success('Appointment booked successfully!');
             router.push("/appointment");
         } else {
-            alert("Please select at least one service and one barber.");
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].error("Please select at least one service and one barber.");
         }
     };
     const toggleServiceSelect = (id)=>{
@@ -81,8 +83,15 @@ const Bookinglist = ()=>{
             ]);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "text-[#D6D7D6] px-6 py-12 space-y-24 bg-[#1B1B1A] min-h-screen",
+        className: "text-[#D6D7D6] px-8 pt-28 pb-12 space-y-24 bg-[#1B1B1A] min-h-screen",
         children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Toaster"], {
+                richColors: true
+            }, void 0, false, {
+                fileName: "[project]/src/app/bookinglist/page.tsx",
+                lineNumber: 84,
+                columnNumber: 7
+            }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -93,7 +102,7 @@ const Bookinglist = ()=>{
                                 children: "Choose Your Services"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/bookinglist/page.tsx",
-                                lineNumber: 93,
+                                lineNumber: 88,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -101,13 +110,13 @@ const Bookinglist = ()=>{
                                 children: "Tailored for your perfect look"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/bookinglist/page.tsx",
-                                lineNumber: 94,
+                                lineNumber: 89,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/bookinglist/page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 87,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -120,12 +129,12 @@ const Bookinglist = ()=>{
                                     size: 20
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/bookinglist/page.tsx",
-                                    lineNumber: 101,
+                                    lineNumber: 96,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/bookinglist/page.tsx",
-                                lineNumber: 97,
+                                lineNumber: 92,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -136,27 +145,27 @@ const Bookinglist = ()=>{
                                     children: "Loading..."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/bookinglist/page.tsx",
-                                    lineNumber: 109,
+                                    lineNumber: 104,
                                     columnNumber: 15
                                 }, this) : serviceError ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "text-red-500",
                                     children: "Error loading services"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/bookinglist/page.tsx",
-                                    lineNumber: 111,
+                                    lineNumber: 106,
                                     columnNumber: 15
                                 }, this) : service.map((item, index)=>{
                                     const isSelected = selectedServices.includes(item._id);
                                     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: `relative w-[250px] h-[220px] bg-[#2B2B2B]/90 border ${isSelected ? "border-blue-500" : "border-[#757442]/30"} rounded-2xl flex-shrink-0 p-4 backdrop-blur-md cursor-pointer hover:scale-105 hover:shadow-[0_0_10px_#75744266] transition-all duration-300`,
                                         onClick: ()=>toggleServiceSelect(item._id),
+                                        className: `relative w-[250px] h-[220px] flex-shrink-0 bg-[#2B2B2B]/90 border rounded-2xl p-4 cursor-pointer backdrop-blur-md transition-all duration-300 hover:scale-105 hover:shadow-[0_0_10px_#75744266] ${isSelected ? "border-blue-500" : "border-[#757442]/30"}`,
                                         children: [
                                             isSelected && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2d$big$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle$3e$__["CheckCircle"], {
                                                 className: "absolute top-2 right-2 text-blue-500 bg-[#1B1B1A] rounded-full",
                                                 size: 20
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/bookinglist/page.tsx",
-                                                lineNumber: 122,
+                                                lineNumber: 119,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -165,38 +174,38 @@ const Bookinglist = ()=>{
                                                 className: "w-full h-[110px] object-cover rounded-md mb-3"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/bookinglist/page.tsx",
-                                                lineNumber: 124,
+                                                lineNumber: 121,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                                className: "text-xl font-semibold truncate",
+                                                className: "text-xl font-semibold truncate text-[#D6D7D6]",
                                                 children: item.serviceName
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/bookinglist/page.tsx",
-                                                lineNumber: 129,
+                                                lineNumber: 126,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-sm text-gray-400 mt-1",
+                                                className: "text-sm text-[#a0a09a] mt-1",
                                                 children: [
                                                     "₹ ",
                                                     item.serviceCharge
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/bookinglist/page.tsx",
-                                                lineNumber: 130,
+                                                lineNumber: 129,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, index, true, {
                                         fileName: "[project]/src/app/bookinglist/page.tsx",
-                                        lineNumber: 116,
+                                        lineNumber: 111,
                                         columnNumber: 19
                                     }, this);
                                 })
                             }, void 0, false, {
                                 fileName: "[project]/src/app/bookinglist/page.tsx",
-                                lineNumber: 104,
+                                lineNumber: 99,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -206,24 +215,24 @@ const Bookinglist = ()=>{
                                     size: 20
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/bookinglist/page.tsx",
-                                    lineNumber: 141,
+                                    lineNumber: 140,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/bookinglist/page.tsx",
-                                lineNumber: 137,
+                                lineNumber: 136,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/bookinglist/page.tsx",
-                        lineNumber: 96,
+                        lineNumber: 91,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/bookinglist/page.tsx",
-                lineNumber: 91,
+                lineNumber: 86,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -236,7 +245,7 @@ const Bookinglist = ()=>{
                                 children: "Pick Your Barber"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/bookinglist/page.tsx",
-                                lineNumber: 149,
+                                lineNumber: 148,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -244,13 +253,13 @@ const Bookinglist = ()=>{
                                 children: "Craftsmanship that speaks for itself"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/bookinglist/page.tsx",
-                                lineNumber: 150,
+                                lineNumber: 149,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/bookinglist/page.tsx",
-                        lineNumber: 148,
+                        lineNumber: 147,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -263,12 +272,12 @@ const Bookinglist = ()=>{
                                     size: 18
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/bookinglist/page.tsx",
-                                    lineNumber: 157,
+                                    lineNumber: 156,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/bookinglist/page.tsx",
-                                lineNumber: 153,
+                                lineNumber: 152,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -279,20 +288,20 @@ const Bookinglist = ()=>{
                                     children: "Loading barbers..."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/bookinglist/page.tsx",
-                                    lineNumber: 165,
+                                    lineNumber: 164,
                                     columnNumber: 15
                                 }, this) : barberError ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "text-red-500",
                                     children: "Error loading barbers"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/bookinglist/page.tsx",
-                                    lineNumber: 167,
+                                    lineNumber: 166,
                                     columnNumber: 15
                                 }, this) : barbers.map((barber)=>{
                                     const isSelected = selectedBarbers.includes(barber._id);
                                     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: `relative w-[180px] flex-shrink-0 p-4 rounded-2xl shadow-md ${isSelected ? "border-blue-500" : "border-[#757442]/40"} bg-[#2B2B2B]/80 border hover:shadow-[#757442]/40 hover:scale-105 transition-all duration-300 cursor-pointer backdrop-blur`,
                                         onClick: ()=>toggleBarberSelect(barber._id),
+                                        className: `relative w-[180px] flex-shrink-0 p-4 rounded-2xl border backdrop-blur bg-[#2B2B2B]/80 shadow-md cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-[0_0_10px_#75744266] ${isSelected ? "border-blue-500" : "border-[#757442]/40"}`,
                                         children: [
                                             isSelected && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2d$big$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle$3e$__["CheckCircle"], {
                                                 className: "absolute top-2 right-2 text-blue-500 bg-[#1B1B1A] rounded-full",
@@ -307,7 +316,7 @@ const Bookinglist = ()=>{
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                     src: barber.employeeImage || "/placeholder.png",
                                                     alt: barber.employeeName,
-                                                    className: "object-cover w-full h-full hover:scale-110 transition-transform duration-300"
+                                                    className: "object-cover w-full h-full transition-transform duration-300 hover:scale-110"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/bookinglist/page.tsx",
                                                     lineNumber: 185,
@@ -322,7 +331,7 @@ const Bookinglist = ()=>{
                                                 className: "text-center space-y-1",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h6", {
-                                                        className: "text-base font-semibold truncate",
+                                                        className: "text-base font-semibold truncate text-[#D6D7D6]",
                                                         children: barber.employeeName
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/bookinglist/page.tsx",
@@ -330,7 +339,7 @@ const Bookinglist = ()=>{
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-xs italic text-[#dadac6]",
+                                                        className: "text-xs italic text-[#cecec0]",
                                                         children: barber.specialCut
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/bookinglist/page.tsx",
@@ -338,7 +347,7 @@ const Bookinglist = ()=>{
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-sm font-bold",
+                                                        className: "text-sm font-bold text-[#D6D7D6]",
                                                         children: [
                                                             "₹ ",
                                                             barber.employeeFees
@@ -365,13 +374,13 @@ const Bookinglist = ()=>{
                                         ]
                                     }, barber._id, true, {
                                         fileName: "[project]/src/app/bookinglist/page.tsx",
-                                        lineNumber: 172,
+                                        lineNumber: 171,
                                         columnNumber: 19
                                     }, this);
                                 })
                             }, void 0, false, {
                                 fileName: "[project]/src/app/bookinglist/page.tsx",
-                                lineNumber: 160,
+                                lineNumber: 159,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -392,13 +401,13 @@ const Bookinglist = ()=>{
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/bookinglist/page.tsx",
-                        lineNumber: 152,
+                        lineNumber: 151,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/bookinglist/page.tsx",
-                lineNumber: 147,
+                lineNumber: 146,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -409,18 +418,18 @@ const Bookinglist = ()=>{
                     children: "Book Now"
                 }, void 0, false, {
                     fileName: "[project]/src/app/bookinglist/page.tsx",
-                    lineNumber: 213,
+                    lineNumber: 214,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/bookinglist/page.tsx",
-                lineNumber: 212,
+                lineNumber: 213,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/bookinglist/page.tsx",
-        lineNumber: 88,
+        lineNumber: 83,
         columnNumber: 5
     }, this);
 };

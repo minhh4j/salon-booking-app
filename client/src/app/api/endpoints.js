@@ -12,7 +12,7 @@ export const endpoint = {
     },
     ADMIN: {
       BARBER: {
-        ADD: '/add-employee',
+        ADD: 'add-employee',
         DELETE: (id) => `/delete-employee/${id}`,
       },
       SERVICE :{

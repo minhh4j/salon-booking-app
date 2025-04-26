@@ -22,6 +22,15 @@ const initialState: BarberState = {
   error: null,
 };
 
+interface BarberData {
+  employeeName: string;
+  employeeImage: string;
+  duration: string;
+  employeeFees: string;
+  specialCut: string;
+  description: string;
+  isDeleted: boolean;
+}
 
 export const fetchBarbers = createAsyncThunk('barbers/fetchAll', async (_, thunkAPI) => {
   try {
@@ -52,6 +61,22 @@ export const deleteBarber = createAsyncThunk(
   }
 );
 
+export const addBarber = createAsyncThunk(
+  'barbers/addBarber',
+  async (barberData: BarberData, thunkAPI) => {
+    console.log(barberData , "cvbkl")
+    try {
+      console.log("ggghhj")
+      const response = await axios.post(`http://localhost:5001/api/${endpoint.ADMIN.BARBER.ADD}`, barberData);
+      console.log()
+      return response.data;
+    } catch (error: any) {
+      console.log(error)
+      return thunkAPI.rejectWithValue(error.response?.data?.message || 'Failed to add barber');
+    }
+  }
+);
+
 const barberSlice = createSlice({
   name: 'barbers',
   initialState,
@@ -77,6 +102,20 @@ const barberSlice = createSlice({
       .addCase(deleteBarber.rejected, (state, action) => {
         state.error = action.payload as string;
       })
+
+      .addCase(addBarber.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(addBarber.fulfilled, (state, action: PayloadAction<Barber>) => {
+        state.loading = false;
+        state.barbers.push(action.payload); 
+      })
+      .addCase(addBarber.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
+      })
+      
       
   },
 });

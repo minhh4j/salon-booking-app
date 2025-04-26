@@ -293,7 +293,7 @@ const ServiceManagement = ()=>{
     const [formData, setFormData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
         serviceName: "",
         serviceCharge: "",
-        image: "",
+        image: File || null,
         duration: "",
         serviceDescription: ""
     });
@@ -316,12 +316,18 @@ const ServiceManagement = ()=>{
     };
     const handleSubmit = async (e)=>{
         e.preventDefault();
-        const newService = {
-            ...formData,
-            serviceCharge: Number(formData.serviceCharge)
-        };
-        const result = await dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$features$2f$ServicesSlice$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["addService"])(newService));
-        if (__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$features$2f$ServicesSlice$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["addService"].fulfilled.match(result)) {}
+        const formDataa = new FormData();
+        Object.entries(formData).forEach(([key, value])=>{
+            formDataa.append(key, value);
+        });
+        setFormData({
+            serviceName: "",
+            serviceCharge: "",
+            image: File || null,
+            duration: "",
+            serviceDescription: ""
+        });
+        console.log(formDataa, "dvhbjnmk");
     };
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "ServiceManagement.useEffect": ()=>{
@@ -346,13 +352,13 @@ const ServiceManagement = ()=>{
                             children: "Add Service"
                         }, void 0, false, {
                             fileName: "[project]/src/app/admin/services/page.tsx",
-                            lineNumber: 86,
-                            columnNumber: 5
+                            lineNumber: 88,
+                            columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/admin/services/page.tsx",
-                        lineNumber: 85,
-                        columnNumber: 3
+                        lineNumber: 87,
+                        columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$drawer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DrawerContent"], {
                         className: "bg-black text-[#EDEDED] border border-[#2B2B2B] max-w-lg mx-auto h-[85vh] overflow-hidden rounded-t-2xl",
@@ -367,26 +373,26 @@ const ServiceManagement = ()=>{
                                             children: "Add a New Service"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/admin/services/page.tsx",
-                                            lineNumber: 92,
-                                            columnNumber: 9
+                                            lineNumber: 94,
+                                            columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$drawer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DrawerDescription"], {
                                             className: "text-sm text-gray-400",
                                             children: "Fill out the form below to add a new service offering."
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/admin/services/page.tsx",
-                                            lineNumber: 95,
-                                            columnNumber: 9
+                                            lineNumber: 97,
+                                            columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/admin/services/page.tsx",
-                                    lineNumber: 91,
-                                    columnNumber: 7
+                                    lineNumber: 93,
+                                    columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
-                                    className: " no-scrollbar flex-1 px-6 overflow-y-auto space-y-4",
-                                    onSubmit: (e)=>e.preventDefault(),
+                                    className: "no-scrollbar flex-1 px-6 overflow-y-auto space-y-4",
+                                    onSubmit: handleSubmit,
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             children: [
@@ -395,25 +401,27 @@ const ServiceManagement = ()=>{
                                                     children: "Service Name"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/services/page.tsx",
-                                                    lineNumber: 106,
-                                                    columnNumber: 11
+                                                    lineNumber: 108,
+                                                    columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                     type: "text",
                                                     name: "serviceName",
                                                     required: true,
+                                                    value: formData.serviceName,
+                                                    onChange: handleChange,
                                                     className: "w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white",
                                                     placeholder: "e.g. Haircut"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/services/page.tsx",
-                                                    lineNumber: 107,
-                                                    columnNumber: 11
+                                                    lineNumber: 109,
+                                                    columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/admin/services/page.tsx",
-                                            lineNumber: 105,
-                                            columnNumber: 9
+                                            lineNumber: 107,
+                                            columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             children: [
@@ -422,52 +430,53 @@ const ServiceManagement = ()=>{
                                                     children: "Service Charge (₹)"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/services/page.tsx",
-                                                    lineNumber: 117,
-                                                    columnNumber: 11
+                                                    lineNumber: 121,
+                                                    columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                    type: "text",
+                                                    type: "number",
                                                     name: "serviceCharge",
                                                     required: true,
+                                                    value: formData.serviceCharge,
+                                                    onChange: handleChange,
                                                     className: "w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white",
                                                     placeholder: "e.g. 499"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/services/page.tsx",
-                                                    lineNumber: 118,
-                                                    columnNumber: 11
+                                                    lineNumber: 122,
+                                                    columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/admin/services/page.tsx",
-                                            lineNumber: 116,
-                                            columnNumber: 9
+                                            lineNumber: 120,
+                                            columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                     className: "block text-sm text-gray-300 mb-1",
-                                                    children: "Image URL"
+                                                    children: "Image"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/services/page.tsx",
-                                                    lineNumber: 128,
-                                                    columnNumber: 11
+                                                    lineNumber: 134,
+                                                    columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                     type: "file",
                                                     name: "image",
-                                                    required: true,
-                                                    className: "w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white",
-                                                    placeholder: "https://example.com/image.jpg"
+                                                    onChange: handleChange,
+                                                    className: "w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/services/page.tsx",
-                                                    lineNumber: 129,
-                                                    columnNumber: 11
+                                                    lineNumber: 135,
+                                                    columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/admin/services/page.tsx",
-                                            lineNumber: 127,
-                                            columnNumber: 9
+                                            lineNumber: 133,
+                                            columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             children: [
@@ -476,25 +485,27 @@ const ServiceManagement = ()=>{
                                                     children: "Duration"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/services/page.tsx",
-                                                    lineNumber: 139,
-                                                    columnNumber: 11
+                                                    lineNumber: 144,
+                                                    columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                    type: "text",
+                                                    type: "number",
                                                     name: "duration",
                                                     required: true,
+                                                    value: formData.duration,
+                                                    onChange: handleChange,
                                                     className: "w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white",
-                                                    placeholder: "e.g. 30 mins"
+                                                    placeholder: "e.g. 30"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/services/page.tsx",
-                                                    lineNumber: 140,
-                                                    columnNumber: 11
+                                                    lineNumber: 145,
+                                                    columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/admin/services/page.tsx",
-                                            lineNumber: 138,
-                                            columnNumber: 9
+                                            lineNumber: 143,
+                                            columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             children: [
@@ -503,38 +514,40 @@ const ServiceManagement = ()=>{
                                                     children: "Description"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/services/page.tsx",
-                                                    lineNumber: 150,
-                                                    columnNumber: 11
+                                                    lineNumber: 157,
+                                                    columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
                                                     name: "serviceDescription",
                                                     rows: 3,
                                                     required: true,
+                                                    value: formData.serviceDescription,
+                                                    onChange: handleChange,
                                                     className: "w-full px-3 py-2 text-sm rounded-md bg-[#1A1A1A] text-[#F1F1F1] border border-[#444] focus:outline-none focus:ring-1 focus:ring-white",
                                                     placeholder: "Brief description of the service"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/services/page.tsx",
-                                                    lineNumber: 151,
-                                                    columnNumber: 11
+                                                    lineNumber: 158,
+                                                    columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/admin/services/page.tsx",
-                                            lineNumber: 149,
-                                            columnNumber: 9
+                                            lineNumber: 156,
+                                            columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "h-24"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/admin/services/page.tsx",
-                                            lineNumber: 160,
-                                            columnNumber: 9
+                                            lineNumber: 169,
+                                            columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/admin/services/page.tsx",
-                                    lineNumber: 101,
-                                    columnNumber: 7
+                                    lineNumber: 103,
+                                    columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "px-6 pt-3 pb-6 border-t border-[#333] bg-black sticky bottom-0 shrink-0",
@@ -544,11 +557,12 @@ const ServiceManagement = ()=>{
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                                 type: "submit",
                                                 className: "w-full bg-white text-black hover:bg-gray-200 transition font-medium",
+                                                onClick: handleSubmit,
                                                 children: "Submit"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/admin/services/page.tsx",
-                                                lineNumber: 166,
-                                                columnNumber: 11
+                                                lineNumber: 176,
+                                                columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$drawer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DrawerClose"], {
                                                 asChild: true,
@@ -557,48 +571,48 @@ const ServiceManagement = ()=>{
                                                     children: "Cancel"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/services/page.tsx",
-                                                    lineNumber: 174,
-                                                    columnNumber: 13
+                                                    lineNumber: 185,
+                                                    columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/admin/services/page.tsx",
-                                                lineNumber: 173,
-                                                columnNumber: 11
+                                                lineNumber: 184,
+                                                columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/admin/services/page.tsx",
-                                        lineNumber: 165,
-                                        columnNumber: 9
+                                        lineNumber: 175,
+                                        columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/admin/services/page.tsx",
-                                    lineNumber: 164,
-                                    columnNumber: 7
+                                    lineNumber: 174,
+                                    columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/admin/services/page.tsx",
-                            lineNumber: 90,
-                            columnNumber: 5
+                            lineNumber: 92,
+                            columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/admin/services/page.tsx",
-                        lineNumber: 89,
-                        columnNumber: 3
+                        lineNumber: 91,
+                        columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/admin/services/page.tsx",
-                lineNumber: 84,
-                columnNumber: 1
+                lineNumber: 86,
+                columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                 className: "text-3xl font-bold text-center text-[#D6D7D6] mb-10",
                 children: "Our Services"
             }, void 0, false, {
                 fileName: "[project]/src/app/admin/services/page.tsx",
-                lineNumber: 184,
+                lineNumber: 195,
                 columnNumber: 7
             }, this),
             loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -606,7 +620,7 @@ const ServiceManagement = ()=>{
                 children: "Loading..."
             }, void 0, false, {
                 fileName: "[project]/src/app/admin/services/page.tsx",
-                lineNumber: 189,
+                lineNumber: 198,
                 columnNumber: 9
             }, this),
             error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -614,7 +628,7 @@ const ServiceManagement = ()=>{
                 children: error
             }, void 0, false, {
                 fileName: "[project]/src/app/admin/services/page.tsx",
-                lineNumber: 192,
+                lineNumber: 201,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -632,12 +646,12 @@ const ServiceManagement = ()=>{
                                         className: "w-full h-full object-cover"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/admin/services/page.tsx",
-                                        lineNumber: 201,
+                                        lineNumber: 210,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/admin/services/page.tsx",
-                                    lineNumber: 200,
+                                    lineNumber: 209,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -648,7 +662,7 @@ const ServiceManagement = ()=>{
                                             children: item.serviceName
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/admin/services/page.tsx",
-                                            lineNumber: 209,
+                                            lineNumber: 218,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -659,7 +673,7 @@ const ServiceManagement = ()=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/admin/services/page.tsx",
-                                            lineNumber: 210,
+                                            lineNumber: 219,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -667,7 +681,7 @@ const ServiceManagement = ()=>{
                                             children: item.duration
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/admin/services/page.tsx",
-                                            lineNumber: 213,
+                                            lineNumber: 222,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -675,13 +689,13 @@ const ServiceManagement = ()=>{
                                             children: item.serviceDescription
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/admin/services/page.tsx",
-                                            lineNumber: 214,
+                                            lineNumber: 223,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/admin/services/page.tsx",
-                                    lineNumber: 208,
+                                    lineNumber: 217,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -690,40 +704,40 @@ const ServiceManagement = ()=>{
                                     children: "Delete"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/admin/services/page.tsx",
-                                    lineNumber: 219,
+                                    lineNumber: 228,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/admin/services/page.tsx",
-                            lineNumber: 199,
+                            lineNumber: 208,
                             columnNumber: 15
                         }, this)
                     }, item._id, false, {
                         fileName: "[project]/src/app/admin/services/page.tsx",
-                        lineNumber: 198,
+                        lineNumber: 207,
                         columnNumber: 13
                     }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     className: "col-span-full text-center text-gray-500 italic mt-6",
                     children: "No services found."
                 }, void 0, false, {
                     fileName: "[project]/src/app/admin/services/page.tsx",
-                    lineNumber: 229,
+                    lineNumber: 238,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/admin/services/page.tsx",
-                lineNumber: 195,
+                lineNumber: 204,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/admin/services/page.tsx",
-        lineNumber: 82,
+        lineNumber: 85,
         columnNumber: 5
     }, this);
 };
-_s(ServiceManagement, "hRW1rpI65G9K4f8rxQMa3qyd84o=", false, function() {
+_s(ServiceManagement, "uBRuOqIA8qnYmFKht3rfywEBU8E=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDispatch"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelector"]
